@@ -47,7 +47,7 @@
 
     .wrap{
       width:100%;
-      max-width: var(--contentMax);
+      max-width: 1400px;
     }
 
     /* Top: headline + micro (как в ТЗ) */
@@ -260,12 +260,11 @@
       left: 50%;
       bottom: calc(100% + 15px);
       transform: translateX(-50%);
-      font-size: 15px;
-      line-height: 20px;
+      font-size: 16px;
+      line-height: 22px;
       font-weight: 500;
       margin: 0;
-      max-width: 280px;
-      text-align: center;
+      white-space: nowrap;
       opacity: 0;
       transition: opacity .3s ease;
       pointer-events: none;
@@ -276,12 +275,11 @@
       left: 50%;
       top: calc(100% + 15px);
       transform: translateX(-50%);
-      font-size: 13px;
-      line-height: 18px;
+      font-size: 14px;
+      line-height: 20px;
       margin: 0;
       color: var(--text);
-      max-width: 280px;
-      text-align: center;
+      white-space: nowrap;
       opacity: 0;
       transition: opacity .3s ease;
       pointer-events: none;
