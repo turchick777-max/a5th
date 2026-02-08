@@ -163,9 +163,9 @@
 
     .marker{
       position:absolute;
-      top: calc(50% - (var(--tickH)/2));
+      top: 0;
       width: 24px; /* click target */
-      height: var(--tickH);
+      height: 100%;
       margin-left: -12px;
       border: 0;
       padding: 0;
@@ -178,10 +178,11 @@
     .marker .bar{
       position:absolute;
       left: 50%;
-      top: 0;
+      top: 50%;
       width: var(--markerW);
       height: var(--tickH);
       margin-left: calc(-1 * var(--markerW) / 2);
+      margin-top: calc(-1 * var(--tickH) / 2);
       background: #000;
       opacity: .9;
       transform-origin: center;
@@ -254,32 +255,38 @@
     }
 
     /* Text panel inside card (title above marker + desc under) */
-    .panelTop{
-      margin-bottom: 24px;
-      display:flex;
-      flex-direction: column;
-      align-items:center;
-      text-align:center;
-    }
-    .panelTitle{
-      font-size: 22px;
-      line-height: 32px;
+    .markerTitle{
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 20px);
+      transform: translateX(-50%);
+      font-size: 18px;
+      line-height: 26px;
       font-weight: 500;
       margin: 0;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+      color: var(--text);
     }
-    .panelBottom{
-      margin-top: 24px;
-      display:flex;
-      flex-direction: column;
-      align-items:center;
-      text-align:center;
-    }
-    .panelDesc{
-      font-size: 16px;
-      line-height: 24px;
+    .markerDesc{
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 20px);
+      transform: translateX(-50%);
+      font-size: 14px;
+      line-height: 20px;
       margin: 0;
       color: var(--text);
-      max-width: 600px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .marker.is-active .markerTitle,
+    .marker.is-active .markerDesc{
+      opacity: 1;
     }
     .panelDate{
       font-size: 13px;
@@ -317,11 +324,6 @@
       </div>
 
       <div class="card">
-        <!-- Title above timeline -->
-        <div class="panelTop" aria-live="polite">
-          <p class="panelTitle" id="panelTitle">TRL-3 — Core principle proven</p>
-        </div>
-
         <div class="timeline" id="trlTimeline">
           <button class="tbtn" id="prevBtn" aria-label="Previous">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
@@ -339,11 +341,6 @@
               <path stroke="currentColor" stroke-width="1.5" d="m6 12 4-4-4-4"/>
             </svg>
           </button>
-        </div>
-
-        <!-- Description below timeline -->
-        <div class="panelBottom">
-          <p class="panelDesc" id="panelDesc">controlled samples • repeatable directional effect • baseline conditions</p>
         </div>
       </div>
     </section>
@@ -413,18 +410,11 @@
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
-    const panelTitle = document.getElementById("panelTitle");
-    const panelDesc  = document.getElementById("panelDesc");
-
     // По умолчанию выберем TRL-3 (первый активный), как логично для "active checkpoints"
     let activeIndex = TRL.findIndex(x => x.id === 3);
     if (activeIndex < 0) activeIndex = 0;
 
     function setPanel(idx){
-      const t = TRL[idx];
-      panelTitle.textContent = t.title;
-      panelDesc.textContent  = t.desc;
-
       // update markers
       [...markersEl.children].forEach((node, i) => {
         node.classList.toggle("is-active", i === idx);
@@ -482,9 +472,19 @@
           <p class="t2">${t.active ? t.desc : t.desc}</p>
         `;
 
+        const markerTitle = document.createElement("div");
+        markerTitle.className = "markerTitle";
+        markerTitle.textContent = t.title;
+
+        const markerDesc = document.createElement("div");
+        markerDesc.className = "markerDesc";
+        markerDesc.textContent = t.desc;
+
         btn.appendChild(bar);
         btn.appendChild(halo);
         btn.appendChild(tip);
+        btn.appendChild(markerTitle);
+        btn.appendChild(markerDesc);
 
         markersEl.appendChild(btn);
       });
