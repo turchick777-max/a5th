@@ -64,7 +64,7 @@
       line-height: 16px;
       letter-spacing: .01em;
       color: var(--muted);
-      margin: 0 0 10px 0;
+      margin: 10px 0 0 0;
     }
 
     .headline{
@@ -81,7 +81,7 @@
     }
     .headline .l2{
       display:block;
-      font-size: 44px;
+      font-size: 13px;
     }
 
     /* Right column intentionally minimal (как реф: пустое пространство/текст можно добавить позже) */
@@ -299,11 +299,11 @@
     <section class="wrap">
       <div class="top">
         <div>
-          <p class="micro">Pre-NDA view. Evidence package: Data Room (e-NDA).</p>
           <h1 class="headline">
             <span class="l1">INVESTOR TEASER</span>
             <span class="l2">TRL SNAPSHOT</span>
           </h1>
+          <p class="micro">Pre-NDA view. Evidence package: Data Room (e-NDA).</p>
         </div>
         <div class="topRight">
           <!-- В ТЗ нет отдельного правого текста — оставил минимально.
@@ -334,7 +334,6 @@
         <div class="panel" aria-live="polite">
           <p class="panelTitle" id="panelTitle">TRL-3 — Core principle proven</p>
           <p class="panelDesc" id="panelDesc">controlled samples • repeatable directional effect • baseline conditions</p>
-          <p class="panelDate" id="panelMicro">Pre-NDA view. Evidence package: Data Room (e-NDA).</p>
         </div>
       </div>
     </section>
@@ -406,7 +405,6 @@
 
     const panelTitle = document.getElementById("panelTitle");
     const panelDesc  = document.getElementById("panelDesc");
-    const panelMicro = document.getElementById("panelMicro");
 
     // По умолчанию выберем TRL-3 (первый активный), как логично для "active checkpoints"
     let activeIndex = TRL.findIndex(x => x.id === 3);
@@ -416,8 +414,6 @@
       const t = TRL[idx];
       panelTitle.textContent = t.title;
       panelDesc.textContent  = t.desc;
-      // снизу micro в панели: для активных — Pre-NDA, для неактивных — их micro из ТЗ
-      panelMicro.textContent = t.active ? ACTIVE_MICRO : t.desc;
 
       // update markers
       [...markersEl.children].forEach((node, i) => {
