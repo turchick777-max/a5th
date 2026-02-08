@@ -284,19 +284,16 @@
       transition: opacity .3s ease;
       pointer-events: none;
     }
+    /* Only active marker shows text */
     .marker.is-active .markerTitle,
     .marker.is-active .markerDesc{
       opacity: 1;
     }
-    /* Inactive markers - dimmed text */
-    .marker.is-inactive .markerTitle,
-    .marker.is-inactive .markerDesc{
-      color: var(--muted);
-      opacity: 0.6;
-    }
+    /* Inactive markers when active - dimmed text */
     .marker.is-inactive.is-active .markerTitle,
     .marker.is-inactive.is-active .markerDesc{
-      opacity: 1;
+      opacity: 0.5;
+      color: var(--muted);
     }
     .panelDate{
       font-size: 13px;
