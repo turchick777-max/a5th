@@ -288,6 +288,16 @@
     .marker.is-active .markerDesc{
       opacity: 1;
     }
+    /* Inactive markers - dimmed text */
+    .marker.is-inactive .markerTitle,
+    .marker.is-inactive .markerDesc{
+      color: var(--muted);
+      opacity: 0.6;
+    }
+    .marker.is-inactive.is-active .markerTitle,
+    .marker.is-inactive.is-active .markerDesc{
+      opacity: 1;
+    }
     .panelDate{
       font-size: 13px;
       line-height: 18px;
@@ -436,7 +446,7 @@
       TRL.forEach((t, i) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "marker" + (i === activeIndex ? " is-active" : "");
+        btn.className = "marker" + (i === activeIndex ? " is-active" : "") + (!t.active ? " is-inactive" : "");
         btn.style.left = (i / (n - 1) * 100) + "%";
         btn.setAttribute("aria-label", t.title);
         btn.addEventListener("click", () => { activeIndex = i; setPanel(activeIndex); });
