@@ -287,18 +287,19 @@
       opacity: 0.75;
       color: var(--muted);
     }
-    /* First marker - text starts from the bar going right */
+    /* First marker - text aligns with left arrow button */
     .marker:first-child .markerTitle,
     .marker:first-child .markerDesc{
-      left: 50%;
+      left: calc(-8% - var(--btnSize) / 2);
       transform: translateX(0);
       text-align: left;
     }
-    /* Last marker - text ends at the bar going left */
+    /* Last marker - text aligns with right arrow button */
     .marker:last-child .markerTitle,
     .marker:last-child .markerDesc{
-      left: 50%;
-      transform: translateX(-100%);
+      right: calc(-8% - var(--btnSize) / 2);
+      left: auto;
+      transform: translateX(0);
       text-align: right;
     }
     .panelDate{
