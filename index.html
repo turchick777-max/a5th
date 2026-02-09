@@ -221,25 +221,9 @@
       outline-offset: 2px;
     }
 
-    /* Tooltip */
+    /* Tooltip - disabled */
     .tip{
-      position:absolute;
-      left: 50%;
-      top: calc(50% - (var(--tickH)/2) - 10px);
-      transform: translate(-50%, -100%);
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 8px 20px rgba(0,0,0,.08);
-      border-radius: 12px;
-      padding: 10px 12px;
-      width: 260px;
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .15s ease, transform .15s ease;
-    }
-    .marker:hover .tip{
-      opacity: 1;
-      transform: translate(-50%, -108%);
+      display: none;
     }
     .tip .t1{
       font-size: 12px;
