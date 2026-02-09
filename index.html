@@ -287,18 +287,19 @@
       opacity: 0.75;
       color: var(--muted);
     }
-    /* First marker - align text to left */
+    /* First marker - text starts from the bar going right */
     .marker:first-child .markerTitle,
     .marker:first-child .markerDesc{
-      left: 0;
+      left: 50%;
       transform: translateX(0);
+      text-align: left;
     }
-    /* Last marker - align text to right */
+    /* Last marker - text ends at the bar going left */
     .marker:last-child .markerTitle,
     .marker:last-child .markerDesc{
-      left: auto;
-      right: 0;
-      transform: translateX(0);
+      left: 50%;
+      transform: translateX(-100%);
+      text-align: right;
     }
     .panelDate{
       font-size: 13px;
