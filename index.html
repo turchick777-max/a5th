@@ -287,6 +287,19 @@
       opacity: 0.75;
       color: var(--muted);
     }
+    /* First marker - align text to left */
+    .marker:first-child .markerTitle,
+    .marker:first-child .markerDesc{
+      left: 0;
+      transform: translateX(0);
+    }
+    /* Last marker - align text to right */
+    .marker:last-child .markerTitle,
+    .marker:last-child .markerDesc{
+      left: auto;
+      right: 0;
+      transform: translateX(0);
+    }
     .panelDate{
       font-size: 13px;
       line-height: 18px;
