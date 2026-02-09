@@ -288,16 +288,20 @@
       color: var(--muted);
     }
     /* First marker - text aligns with left arrow button */
-    .marker:first-child .markerTitle,
-    .marker:first-child .markerDesc{
+    .marker:first-child .markerTitle{
       left: -100px;
+      transform: translateX(0);
+      text-align: left;
+    }
+    .marker:first-child .markerDesc{
+      left: -150px;
       transform: translateX(0);
       text-align: left;
     }
     /* Last marker - text aligns with right arrow button */
     .marker:last-child .markerTitle,
     .marker:last-child .markerDesc{
-      right: -100px;
+      right: -150px;
       left: auto;
       transform: translateX(0);
       text-align: right;
