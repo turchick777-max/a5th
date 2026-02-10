@@ -271,8 +271,7 @@
       line-height: 20px;
       margin: 0;
       color: var(--text);
-      white-space: normal;
-      max-width: 100%;
+      white-space: pre-line;
       opacity: 0;
       transition: opacity .3s ease;
       pointer-events: none;
@@ -497,7 +496,7 @@
 
         const markerDesc = document.createElement("div");
         markerDesc.className = "markerDesc";
-        markerDesc.innerHTML = t.desc.replace(/ •/g, '\u00A0•');
+        markerDesc.textContent = t.desc.replace(/<br>/g, '\n').replace(/ •/g, '\u00A0•');
 
         btn.appendChild(bar);
         btn.appendChild(halo);
