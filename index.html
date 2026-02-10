@@ -372,49 +372,49 @@
         id: 1,
         active: false,
         title: "TRL-1 — Basic principles observed",
-        desc: "TRL framework shown for reference. Active checkpoints: TRL-3 to TRL-8"
+        desc: "TRL framework shown for reference.<br>Active checkpoints: TRL-3 to TRL-8"
       },
       {
         id: 2,
         active: false,
         title: "TRL-2 — Technology concept formulated",
-        desc: "TRL framework shown for reference. Active checkpoints: TRL-3 to TRL-8"
+        desc: "TRL framework shown for reference.<br>Active checkpoints: TRL-3 to TRL-8"
       },
       {
         id: 3,
         active: true,
         title: "TRL-3 — Core principle proven",
-        desc: "controlled samples • repeatable directional effect • baseline conditions"
+        desc: "controlled samples • repeatable directional effect •<br>baseline conditions"
       },
       {
         id: 4,
         active: true,
         title: "TRL-4 — Bench prototype validated",
-        desc: "instrumented bench runs • stable control loop • repeatability confirmed"
+        desc: "instrumented bench runs • stable control loop •<br>repeatability confirmed"
       },
       {
         id: 5,
         active: true,
         title: "TRL-5 — Pilot subsystem validated (relevant feeds)",
-        desc: "relevant feed classes • config-dependent • before/after results"
+        desc: "relevant feed classes • config-dependent •<br>before/after results"
       },
       {
         id: 6,
         active: true,
         title: "TRL-6 — Integrated pilot demonstrated (≥300h, multi-feed)",
-        desc: "≥300h continuous runs • multi-feed • independent lab before/after (e-NDA)"
+        desc: "≥300h continuous runs • multi-feed •<br>independent lab before/after (e-NDA)"
       },
       {
         id: 7,
         active: true,
         title: "TRL-7 — Field pilot (site integration)",
-        desc: "host site integration • utilities/controls/monitoring • uptime targets"
+        desc: "host site integration • utilities/controls/monitoring •<br>uptime targets"
       },
       {
         id: 8,
         active: true,
         title: "TRL-8 — Pre-commercial system",
-        desc: "engineered package • QA/QC & service model • deployment readiness"
+        desc: "engineered package • QA/QC & service model •<br>deployment readiness"
       },
       {
         id: 9,
@@ -497,7 +497,7 @@
 
         const markerDesc = document.createElement("div");
         markerDesc.className = "markerDesc";
-        markerDesc.textContent = t.desc.replace(/ •/g, '\u00A0•');
+        markerDesc.innerHTML = t.desc.replace(/ •/g, '\u00A0•');
 
         btn.appendChild(bar);
         btn.appendChild(halo);
