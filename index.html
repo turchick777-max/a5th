@@ -287,6 +287,14 @@
       opacity: 0.75;
       color: var(--muted);
     }
+    /* Last marker — right-align so text doesn't overflow the card */
+    .marker:last-child .markerTitle,
+    .marker:last-child .markerDesc{
+      left: auto;
+      right: 50%;
+      transform: none;
+      text-align: right;
+    }
     .panelDate{
       font-size: 13px;
       line-height: 18px;
